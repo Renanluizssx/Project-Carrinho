@@ -1,0 +1,50 @@
+* {
+    margin:0px;
+    padding:0px;
+    box-sizing: border-box;
+}
+h2 {
+    font-size:25px;
+}
+.shoppingcars {
+    display:flex;
+    justify-content: center;
+}
+.menos {
+    position:relative;
+    font-size:60px;
+}
+.menosspan {
+    position:absolute;
+    left:16px;
+    top:-12px;
+}
+.mais {
+    position:relative;
+    font-size:50px;
+}
+.maisspan {
+    position:absolute;
+    left:14px;
+    top:-3px;
+}
+.shoppingcars {
+    display:flex;
+    align-items: center;
+    
+}
+.sdeletar {
+    color:red;
+}
+#sdeletar {
+    cursor:pointer;
+}
+.priceinfo {
+    width:100%;
+    display:flex;
+    justify-content: flex-end;
+    margin-left:-200px;
+}
+.imgminus, .menosspan, .imgplus, .maisspan {
+    cursor: pointer;
+}
