@@ -18,10 +18,12 @@ function OpenEcommercePage(event) {
     const dataBase = {
             name:name.value,
             price:price.value,
-            image:image.value
+            image:image.value,
+            quantity: 1
+            
 
     };
-    //console.log(DataBase)
+
     const data = getLocalStorage("database");
     setLocalStorage("database", [...data, dataBase]);
     

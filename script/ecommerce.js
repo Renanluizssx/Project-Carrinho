@@ -1,8 +1,7 @@
 const getLocalStorage = (key) => JSON.parse(localStorage.getItem(key)) ?? [];
 const setLocalStorage = (key, item) => localStorage.setItem(key, JSON.stringify(item));
 
-//const image = document.getElementById("imageindex");
-//.log(image).addEventListener("click", openIndex)
+
 document.addEventListener("DOMContentLoaded", updateContent);
 function printProduct(DataBase) {
     const index = document.getElementsByClassName("product").length + 1;
@@ -24,7 +23,7 @@ function printProduct(DataBase) {
 function updateContent() {
      dataBase = getLocalStorage("database");
      dataBase.forEach(printProduct);
-    //console.log(dataBase)
+  
 }
 function openIndex() {
     const url = "../index.html";
@@ -33,7 +32,7 @@ function openIndex() {
 function saveProduct(index) {
 
     dataBase = getLocalStorage("database")[index-1]
-    //setLocalStorage("up-products", dataBase)
+ 
     console.log(index)
     updateProduct(dataBase, index)
     
@@ -49,20 +48,12 @@ function saveProduct(index) {
         console.log(dataBase)
         console.log(index)
 
-        const priceditals = {
-            index:index,
-            price: price
-        }
-        console.log(priceditals)
-        //não entendi
+       
         setLocalStorage("up-products", [...newDataBase, ...dataBaseProduct]) 
-    //    productDataBase = {
-    //        index:index,
-     //       price:dataBaseProduct.price
-        //}
+   
         const url = "../pages/carrinho.html";  
         window.open(url)
-        //[...dataBaset, ...dataBaseProduct]
+
 
     }
 
