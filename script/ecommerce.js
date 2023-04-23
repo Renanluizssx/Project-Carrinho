@@ -3,26 +3,26 @@ const setLocalStorage = (key, item) =>
   localStorage.setItem(key, JSON.stringify(item));
 
 document.addEventListener("DOMContentLoaded", updateContent);
-function printProduct(DataBase) {
+function printProduct(products) {
   const index = document.getElementsByClassName("product").length;
   console.log(index);
   const content = document.getElementById("content");
   content.innerHTML += `<div id="product${index}" class="product"> 
     <div id="image${index}" class="image">
      <img id="imageimg${index}"
-      class="imageimg" src="${DataBase.image}">
+      class="imageimg" src="${products.image}">
     </div>
         <div id="productinfo${index}"class="productinfo">
         
-        <h2 id="subtitle${index}" class="subtitle">${DataBase.name}</h2> 
-        <span id="text${index}" class="text">${DataBase.price}</span>
+        <h2 id="subtitle${index}" class="subtitle">${products.name}</h2> 
+        <span id="text${index}" class="text">R$ ${products.price}</span>
         <button data-product-id="${index}" id="button${index}" class="button" onclick="saveProduct(${index})">ADICIONAR AO CARRINHO</button>
         </div>
     </div>`;
 }
 function updateContent() {
-  dataBase = getLocalStorage("database");
-  dataBase.forEach(printProduct);
+  const products = getLocalStorage("products");
+  products.forEach(printProduct);
 }
 function openIndex() {
   const url = "../index.html";
@@ -30,21 +30,13 @@ function openIndex() {
 }
 
 function saveProduct(index) {
-  if (!getLocalStorage("up-products")[index]) {
-    dataBase = getLocalStorage("database")[index];
-
-    console.log(index);
-    updateProduct(dataBase);
-  } else {
-    window.alert("Você não pode adicionar o mesmo produto ao carrinho");
-  }
+  const products = getLocalStorage("products")[index];
+  updateProduct(products);
 }
 
-function updateProduct(dataBase) {
-  const dataBaseProduct = getLocalStorage("up-products");
-
-  setLocalStorage("up-products", [dataBase, ...dataBaseProduct]);
-  console.log(dataBaseProduct);
+function updateProduct(products) {
+  const productsProduct = getLocalStorage("carts");
+  setLocalStorage("carts", [products, ...productsProduct]);
   const url = "../pages/carrinho.html";
   window.open(url);
 }

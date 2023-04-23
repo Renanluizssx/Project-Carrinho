@@ -2,31 +2,23 @@ const getLocalStorage = (key) => JSON.parse(localStorage.getItem(key));
 const setLocalStorage = (key, item) =>
   localStorage.setItem(key, JSON.stringify(item));
 document.addEventListener("DOMContentLoaded", updateProduct);
-document.addEventListener("DOMContentLoaded", () => {
-  const priceinfo = document.getElementById("priceinfo");
-  totalproduct = getLocalStorage("totalproduct");
-  totalproduct.forEach((product) => {
-    priceinfo.innerHTML = `
-    <div id="priceinfo" class="priceinfo">
-    <p> SubTotal ${product.totalquantity}
-    itens R$ ${product.totalprice}</p>
-    </div>
-    `;
-  });
-});
-const priceinfo = document.getElementById("priceinfo");
+//a revisar
+document.addEventListener("DOMContentLoaded", calculatetotal);
 function calculatetotal() {
-  const dataBase = getLocalStorage("up-products");
+  const products = getLocalStorage("carts");
+  console.log(products);
   let totalquantity = 0;
   let totalprice = 0;
-  dataBase.forEach((data) => {
-    totalquantity += data.quantity;
-    totalprice += data.price;
+  products.forEach((data) => {
+    totalquantity += Number(data.quantity);
+    totalprice += Number(data.price);
   });
 
   document.getElementById(`priceinfo`).innerHTML = `
-      <p> SubTotal ${totalquantity} 
-      itens R$ ${totalprice}</p>
+  <div id="priceinfo" class="priceinfo">
+  <p> SubTotal <br>${totalquantity}
+  itens<span class="totalprice"> R$ ${totalprice}</span></p>
+  </div>
       `;
 
   setLocalStorage("totalproduct", [
@@ -39,15 +31,16 @@ function calculatetotal() {
 function plusandminus(quantity, index) {
   document.getElementById(`nspan${index}`).innerText = quantity;
 
-  const price = getLocalStorage("database")[index].price;
+  const price = getLocalStorage("products")[index].price;
   const newprice = Number.parseInt(price * quantity);
   const totalprice = document.getElementById(`pprice${index}`);
 
   totalprice.innerHTML = `R$ ${newprice}`;
 
-  const dataBase = getLocalStorage("up-products");
+  const products = getLocalStorage("carts");
 
-  const newDataBase = dataBase.map((data, i) => {
+  const newproducts = products.map((data, i) => {
+    //atenção
     if (i === index) {
       data.quantity = quantity;
       data.price = newprice;
@@ -55,37 +48,37 @@ function plusandminus(quantity, index) {
     return data;
   });
   console.log(index);
-  console.log(newDataBase);
+  console.log(newproducts);
 
-  setLocalStorage("up-products", newDataBase);
+  setLocalStorage("carts", newproducts);
 }
-content = document.getElementById("content");
-dataBase = getLocalStorage("up-products");
-
 function plus(index) {
   //daria pra melhorar
-  const quantity = getLocalStorage("up-products")[index].quantity + 1;
+  const quantity = getLocalStorage("carts")[index].quantity + 1;
+
   plusandminus(quantity, index);
   calculatetotal();
 }
 
 function minus(index) {
-  const quantity = getLocalStorage("up-products")[index].quantity - 1;
+  const quantity = getLocalStorage("carts")[index].quantity - 1;
+  if (quantity <= 0) {
+    productDelete(index);
+    return null;
+  }
   plusandminus(quantity, index);
   calculatetotal();
 }
 
 function productDelete(index) {
-  const upProducts = getLocalStorage("up-products");
+  const upProducts = getLocalStorage("carts");
   upProducts.splice(index, 1);
-  setLocalStorage("up-products", upProducts);
-
+  setLocalStorage("carts", upProducts);
   location.reload();
-  calculatetotal();
 }
 
 function printProduct(product) {
-  index = document.getElementsByClassName("shoppingcars").length;
+  const index = document.getElementsByClassName("shoppingcars").length;
   console.log(index);
   content.innerHTML += `
     <div id="shoppingcars${index}" class="shoppingcars">
@@ -105,7 +98,7 @@ function printProduct(product) {
             </div>
             <div id="number${index}" class="number">
             <span id="nspan${index}" class="nspan" data-index="index">${
-    getLocalStorage("up-products")[index].quantity
+    getLocalStorage("carts")[index].quantity
   }</span>
             
         </div>
@@ -113,16 +106,20 @@ function printProduct(product) {
             <img id="imgplus${index}" src="../images/Ellipse 3.png" alt="mais" >
             <span id="maisspan" class="maisspan">+</span>
         </div>
+        <div id="divmove${index}" class="divmove">
+
         <div id="price" class="price">
         <p id="pprice${index}" class="pprice">
-        R$${getLocalStorage("up-products")[index].price},00
+        R$${getLocalStorage("carts")[index].price},00
             
         </p>
         </div>
+        
         <div id="deletar" class="deletar">
 
         <span id="sdeletar" class="sdeletar" onclick="productDelete(${index})">Deletar</span>
 
+        </div>
         </div>
        
     
@@ -131,6 +128,6 @@ function printProduct(product) {
     `;
 }
 function updateProduct() {
-  const dataBase = getLocalStorage("up-products");
-  dataBase.forEach(printProduct);
+  const products = getLocalStorage("carts");
+  products.forEach(printProduct);
 }

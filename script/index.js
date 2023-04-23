@@ -2,30 +2,29 @@ const getLocalStorage = (key) => JSON.parse(localStorage.getItem(key)) ?? [];
 const setLocalStorage = (key, item) =>
   localStorage.setItem(key, JSON.stringify(item));
 const button = document.getElementById("button");
-button.addEventListener("click", OpenEcommercePage);
+button.addEventListener("click", saveProduct);
 function checkfields() {
   const form = document.getElementById("form");
   return form.reportValidity();
 }
 
-function OpenEcommercePage(event) {
+function saveProduct(event) {
   event.preventDefault();
   if (!checkfields()) {
     return null;
   }
-  const name = document.getElementById("name");
-  const price = document.getElementById("price");
-  const image = document.getElementById("image");
-  const dataBase = {
-    name: name.value,
-    price: price.value,
-    image: image.value,
+  const name = document.getElementById("name").value;
+  const price = document.getElementById("price").value;
+  const image = document.getElementById("image").value;
+  const products = {
+    name,
+    price,
+    image,
     quantity: 1,
   };
-  //console.log(DataBase)
 
-  const data = getLocalStorage("database");
-  setLocalStorage("database", [...data, dataBase]);
+  const data = getLocalStorage("products");
+  setLocalStorage("products", [...data, products]);
 
   const url = "../pages/ecommerce.html";
   window.open(url, "_self");
