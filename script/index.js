@@ -3,14 +3,14 @@ const setLocalStorage = (key, item) =>
   localStorage.setItem(key, JSON.stringify(item));
 const button = document.getElementById("button");
 button.addEventListener("click", saveProduct);
-function checkfields() {
+function checkFields() {
   const form = document.getElementById("form");
   return form.reportValidity();
 }
 
 function saveProduct(event) {
   event.preventDefault();
-  if (!checkfields()) {
+  if (!checkFields()) {
     return null;
   }
   const name = document.getElementById("name").value;

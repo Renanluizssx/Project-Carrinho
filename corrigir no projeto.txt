@@ -12,7 +12,6 @@
 12 - alterar para camel case
 
 
-
 Dúvidas 
  
 
@@ -20,4 +19,4 @@ Dúvidas
 2 - position relative e position absolute
 3 - modificar mais em negrito
 4 - não pode adicionar o mesmo produto ao carrinho
-5 - number
+5 - colocar return

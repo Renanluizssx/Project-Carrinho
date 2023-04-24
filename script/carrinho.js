@@ -3,61 +3,61 @@ const setLocalStorage = (key, item) =>
   localStorage.setItem(key, JSON.stringify(item));
 document.addEventListener("DOMContentLoaded", updateProduct);
 //a revisar
-document.addEventListener("DOMContentLoaded", calculatetotal);
-function calculatetotal() {
+document.addEventListener("DOMContentLoaded", calculateTotal);
+function calculateTotal() {
   const products = getLocalStorage("carts");
   console.log(products);
-  let totalquantity = 0;
-  let totalprice = 0;
+  let totalQuantity = 0;
+  let totalPrice = 0;
   products.forEach((data) => {
-    totalquantity += Number(data.quantity);
-    totalprice += Number(data.price);
+    totalQuantity += Number(data.quantity);
+    totalPrice += Number(data.price);
   });
 
   document.getElementById(`priceinfo`).innerHTML = `
   <div id="priceinfo" class="priceinfo">
-  <p> SubTotal <br>${totalquantity}
-  itens<span class="totalprice"> R$ ${totalprice}</span></p>
+  <p> SubTotal <br>${totalQuantity}
+  itens<span class="totalPrice"> R$ ${totalPrice}</span></p>
   </div>
       `;
 
-  setLocalStorage("totalproduct", [
+  setLocalStorage("totalProduct", [
     {
-      totalquantity,
-      totalprice,
+      totalQuantity,
+      totalPrice,
     },
   ]);
 }
-function plusandminus(quantity, index) {
+function plusAndMinus(quantity, index) {
   document.getElementById(`nspan${index}`).innerText = quantity;
 
   const price = getLocalStorage("products")[index].price;
-  const newprice = Number.parseInt(price * quantity);
-  const totalprice = document.getElementById(`pprice${index}`);
+  const newPrice = Number.parseInt(price * quantity);
+  const totalPrice = document.getElementById(`pprice${index}`);
 
-  totalprice.innerHTML = `R$ ${newprice}`;
+  totalPrice.innerHTML = `R$ ${newPrice}`;
 
   const products = getLocalStorage("carts");
 
-  const newproducts = products.map((data, i) => {
+  const newProducts = products.map((data, i) => {
     //atenção
     if (i === index) {
       data.quantity = quantity;
-      data.price = newprice;
+      data.price = newPrice;
     }
     return data;
   });
   console.log(index);
-  console.log(newproducts);
+  console.log(newProducts);
 
-  setLocalStorage("carts", newproducts);
+  setLocalStorage("carts", newProducts);
 }
 function plus(index) {
   //daria pra melhorar
   const quantity = getLocalStorage("carts")[index].quantity + 1;
 
-  plusandminus(quantity, index);
-  calculatetotal();
+  plusAndMinus(quantity, index);
+  calculateTotal();
 }
 
 function minus(index) {
@@ -66,8 +66,8 @@ function minus(index) {
     productDelete(index);
     return null;
   }
-  plusandminus(quantity, index);
-  calculatetotal();
+  plusAndMinus(quantity, index);
+  calculateTotal();
 }
 
 function productDelete(index) {
