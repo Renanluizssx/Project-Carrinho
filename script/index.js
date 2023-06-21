@@ -26,6 +26,6 @@ function saveProduct(event) {
   const data = getLocalStorage("products");
   setLocalStorage("products", [...data, products]);
 
-  const url = "../pages/ecommerce.html";
+  const url = "/pages/ecommerce.html";
   window.open(url, "_self");
 }
