@@ -2,11 +2,9 @@ const getLocalStorage = (key) => JSON.parse(localStorage.getItem(key));
 const setLocalStorage = (key, item) =>
   localStorage.setItem(key, JSON.stringify(item));
 document.addEventListener("DOMContentLoaded", updateProduct);
-//a revisar
 document.addEventListener("DOMContentLoaded", calculateTotal);
 function calculateTotal() {
   const products = getLocalStorage("carts");
-  console.log(products);
   let totalQuantity = 0;
   let totalPrice = 0;
   products.forEach((data) => {
@@ -17,11 +15,11 @@ function calculateTotal() {
   document.getElementById(`priceinfo`).innerHTML = `
   <div id="priceinfo" class="priceinfo">
   <p> SubTotal <br>${totalQuantity}
-  itens<span class="totalPrice"> R$ ${totalPrice}</span></p>
+  itens<span id="total-price" class="total-price"> R$ ${totalPrice}</span></p>
   </div>
       `;
 
-  setLocalStorage("totalProduct", [
+  return setLocalStorage("totalProduct", [
     {
       totalQuantity,
       totalPrice,
@@ -29,11 +27,11 @@ function calculateTotal() {
   ]);
 }
 function plusAndMinus(quantity, index) {
-  document.getElementById(`nspan${index}`).innerText = quantity;
+  document.getElementById(`n-span${index}`).innerText = quantity;
 
   const price = getLocalStorage("products")[index].price;
   const newPrice = Number.parseInt(price * quantity);
-  const totalPrice = document.getElementById(`pprice${index}`);
+  const totalPrice = document.getElementById(`p-price${index}`);
 
   totalPrice.innerHTML = `R$ ${newPrice}`;
 
@@ -47,17 +45,14 @@ function plusAndMinus(quantity, index) {
     }
     return data;
   });
-  console.log(index);
-  console.log(newProducts);
-
-  setLocalStorage("carts", newProducts);
+  return setLocalStorage("carts", newProducts);
 }
 function plus(index) {
   //daria pra melhorar
   const quantity = getLocalStorage("carts")[index].quantity + 1;
 
   plusAndMinus(quantity, index);
-  calculateTotal();
+  return calculateTotal();
 }
 
 function minus(index) {
@@ -67,49 +62,49 @@ function minus(index) {
     return null;
   }
   plusAndMinus(quantity, index);
-  calculateTotal();
+  return calculateTotal();
 }
 
 function productDelete(index) {
   const upProducts = getLocalStorage("carts");
   upProducts.splice(index, 1);
   setLocalStorage("carts", upProducts);
-  location.reload();
+  return location.reload();
 }
 
 function printProduct(product) {
-  const index = document.getElementsByClassName("shoppingcars").length;
+  const index = document.getElementsByClassName("shopping-cars").length;
   console.log(index);
-  content.innerHTML += `
-    <div id="shoppingcars${index}" class="shoppingcars">
-        <div id="productimage${index}" class="productimage">
+  return (content.innerHTML += `
+    <div id="shopping-cars${index}" class="shopping-cars">
+        <div id="product-image${index}" class="product-image">
             <img id="image${index}" class="image" src="${
     product.image
   }" alt="image">
         </div>      
         <div id="subtitle${index}" class="subtitle">
-            <h2 id="tagsubtitle${index}" class="tagsubtitle">${
+            <h2 id="tag-subtitle${index}" class="tag-subtitle">${
     product.name
   }</h2>
         </div> 
         <div id="menos" class="menos" onclick="minus(${index})">
-            <img id="imgminus${index}" class="imgminus" src="../images/Ellipse 2.png" alt="menos" >
-            <span id="menosspan" class="menosspan">-</span>
+            <img id="img-minus${index}" class="img-minus" src="../images/Ellipse 2.png" alt="menos" >
+            <span id="menos-span" class="menos-span">-</span>
             </div>
             <div id="number${index}" class="number">
-            <span id="nspan${index}" class="nspan" data-index="index">${
+            <span id="n-span${index}" class="n-span" data-index="index">${
     getLocalStorage("carts")[index].quantity
   }</span>
             
         </div>
         <div id="mais${index}" class="mais" onclick="plus(${index})">
-            <img id="imgplus${index}" src="../images/Ellipse 3.png" alt="mais" >
-            <span id="maisspan" class="maisspan">+</span>
+            <img id="img-plus${index}" src="../images/Ellipse 3.png" alt="mais" >
+            <span id="mais-span" class="mais-span">+</span>
         </div>
-        <div id="divmove${index}" class="divmove">
+        <div id="div-move${index}" class="div-move">
 
         <div id="price" class="price">
-        <p id="pprice${index}" class="pprice">
+        <p id="p-price${index}" class="p-price">
         R$${getLocalStorage("carts")[index].price},00
             
         </p>
@@ -117,7 +112,7 @@ function printProduct(product) {
         
         <div id="deletar" class="deletar">
 
-        <span id="sdeletar" class="sdeletar" onclick="productDelete(${index})">Deletar</span>
+        <span id="s-deletar" class="s-deletar" onclick="productDelete(${index})">Deletar</span>
 
         </div>
         </div>
@@ -125,9 +120,9 @@ function printProduct(product) {
     
 
  
-    `;
+    `);
 }
 function updateProduct() {
   const products = getLocalStorage("carts");
-  products.forEach(printProduct);
+  return products.forEach(printProduct);
 }

@@ -1,22 +1,9 @@
 
-3 - modificar para porcentagem
+10 - bolinha
 
-8 - modificar o valor das divs
-
-9 - nome das divs
-
-10 - modificar mais em negrito
-
-11- alterar kebab-case
-
-12 - alterar para camel case
+12- google font - extra bold
 
 
 Dúvidas 
  
 
-1 - HTML semântico
-2 - position relative e position absolute
-3 - modificar mais em negrito
-4 - não pode adicionar o mesmo produto ao carrinho
-5 - colocar return

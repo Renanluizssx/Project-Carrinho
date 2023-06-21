@@ -13,7 +13,7 @@ header {
 h2 {
   font-size: 36px;
 }
-.shoppingcars {
+.shopping-cars {
   display: flex;
   justify-content: center;
 }
@@ -22,7 +22,7 @@ h2 {
   position: relative;
   font-size: 60px;
 }
-.menosspan {
+.menos-span {
   position: absolute;
   left: -3px;
   top: -8px;
@@ -31,38 +31,37 @@ h2 {
   position: relative;
   font-size: 50px;
 }
-.maisspan {
+.mais-span {
   position: absolute;
   left: -7px;
   top: -9px;
 }
-.shoppingcars {
+.shopping-cars {
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: 40px;
 }
-.sdeletar {
+.s-deletar {
   color: red;
   font-size: 20px;
-}
-#sdeletar {
   cursor: pointer;
 }
+
 .deletar {
   margin-top: 35px;
 }
-.priceinfo {
+.price-info {
   width: 100%;
   display: flex;
   justify-content: flex-end;
   margin-left: -10%;
   align-items: flex-end;
 }
-.imgminus,
-.menosspan,
-.imgplus,
-.maisspan {
+.img-minus,
+.menos-span,
+.img-plus,
+.mais-span {
   cursor: pointer;
 }
 h1 {
@@ -87,10 +86,10 @@ span {
   font-style: Light;
   line-height: 66%;
 }
-.totalprice {
+.total-price {
   margin: 0px;
   margin-left: 40px;
 }
-.divmove {
+.div-move {
   margin-left: 3%;
 }

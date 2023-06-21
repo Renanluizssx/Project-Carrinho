@@ -44,7 +44,7 @@ header {
   display: grid;
   grid: 50% 50% / 100%;
 }
-.productinfo {
+.product-info {
   display: flex;
   margin-top: 70px;
   flex-direction: column;
@@ -60,13 +60,13 @@ header {
 .button {
   margin-bottom: 20px;
 }
-.imagebutton {
+.image-button {
   position: absolute;
   top: 850px;
   left: 1650px;
 }
 
-.imageimg {
+.image-img {
   object-fit: contain;
   height: 100%;
   width: 100%;
