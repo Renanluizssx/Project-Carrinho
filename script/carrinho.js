@@ -12,7 +12,7 @@ function calculateTotal() {
     totalPrice += Number(data.price);
   });
 
-  document.getElementById(`priceinfo`).innerHTML = `
+  document.getElementById(`price-info`).innerHTML = `
   <div id="priceinfo" class="priceinfo">
   <p> SubTotal <br>${totalQuantity}
   itens<span id="total-price" class="total-price"> R$ ${totalPrice}</span></p>
@@ -27,7 +27,9 @@ function calculateTotal() {
   ]);
 }
 function plusAndMinus(quantity, index) {
+ console.log(quantity)
   document.getElementById(`n-span${index}`).innerText = quantity;
+console.log(index)
 
   const price = getLocalStorage("products")[index].price;
   const newPrice = Number.parseInt(price * quantity);
@@ -39,18 +41,42 @@ function plusAndMinus(quantity, index) {
 
   const newProducts = products.map((data, i) => {
     //atenção
-    if (i === index) {
+    if (i == index) {
+      console.log("teste")
+      console.log(i)
       data.quantity = quantity;
       data.price = newPrice;
     }
     return data;
-  });
+    
+  })
+;
+
   return setLocalStorage("carts", newProducts);
+  /*const handleQuantity = (operationType, index) => {
+  const products = getLocalStorage('cartadd')
+  const newProducts = products.map((product, i) => {
+    if (i == index) {
+      const quantity =
+        operationType === 'minus' ? product.quantity - 1 : product.quantity + 1
+      product.quantity = quantity
+      const price = product.price
+      const priceTotal = price * quantity
+      const priceRefresh = document.getElementById(`price${index}`)
+      priceRefresh.innerText = `R$ ${priceTotal}`
+      product.price = priceTotal
+      const quantityRefresh = document.getElementById(`badge-${index}`)
+      quantityRefresh.innerText = quantity
+    }
+    return product
+  })
+  setLocalStorage('cartadd', newProducts)
+}
+*/
 }
 function plus(index) {
   //daria pra melhorar
   const quantity = getLocalStorage("carts")[index].quantity + 1;
-
   plusAndMinus(quantity, index);
   return calculateTotal();
 }

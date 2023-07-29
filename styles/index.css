@@ -72,11 +72,27 @@ header {
   font-size: 32px;
   line-height: 100%;
 }
-@media screen and (width: 280px) and (width: 420px) {
+@media screen and (min-width: 280px) and (max-width: 1044px) {
   .form {
     width: 100%;
+    align-items: center;
   }
+  
   .title h1 {
-    font-size: 5px;
+    font-size: 20px;
+    text-align: center;
   }
+  .name,
+.price,
+.image {
+  width:250px;
 }
+::-moz-placeholder { /* Firefox 19+ */
+  font-size: 10px;
+}
+.button {
+  font-size:7px;
+  width:100px;
+}
+}
+

@@ -25,18 +25,19 @@ function updateContent() {
   return products.forEach(printProduct);
 }
 function openIndex() {
-  const url = "../index.html";
+  const url = "index.html";
   return window.open(url, "_self");
 }
 
 function saveProduct(index) {
+  console.log(index);
   const products = getLocalStorage("products")[index];
   return updateProduct(products);
 }
 
 function updateProduct(products) {
   const productsProduct = getLocalStorage("carts");
-  setLocalStorage("carts", [products, ...productsProduct]);
-  const url = "../pages/carrinho.html";
+  setLocalStorage("carts", [ products, ...productsProduct,]);
+  const url = "/pages/carrinho.html";
   return window.open(url);
 }

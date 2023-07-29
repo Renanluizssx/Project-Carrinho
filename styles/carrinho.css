@@ -51,7 +51,7 @@ h2 {
 .deletar {
   margin-top: 35px;
 }
-.price-info {
+.priceinfo {
   width: 100%;
   display: flex;
   justify-content: flex-end;
@@ -81,15 +81,9 @@ span {
 .div {
   margin-left: 20%;
 }
-.price {
-  font-size: 40px;
-  font-style: Light;
-  line-height: 66%;
-}
-.total-price {
-  margin: 0px;
-  margin-left: 40px;
-}
 .div-move {
   margin-left: 3%;
+}
+.image {
+  width:200px;
 }
