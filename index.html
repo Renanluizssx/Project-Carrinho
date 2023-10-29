@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Adicionar Produto</title>
+    <link rel="stylesheet" href="./styles/index.css" />
+    <link rel="stylesheet" href="./styles/font.css" />
+    <link rel="stylesheet" href="./styles/reset.css" />
+    <script src="./script/index.js" defer></script>
+  </head>
+  <body>
+    <div id="block" class="block">
+      <header>
+        <div id="title" class="title">
+          <h1>Adicionar Produto</h1>
+        </div>
+      </header>
+      <main>
+        <div id="content" class="content">
+          <form id="form" class="form">
+            <input
+              type="text"
+              id="name"
+              class="name"
+              placeholder="Digite aqui o nome do produto"
+              required
+            />
+            <input
+              type="number"
+              id="price"
+              class="price"
+              placeholder="Digite aqui o valor do produto (somente número)"
+              required
+            />
+            <input
+              type="text"
+              id="image"
+              class="image"
+              placeholder="Digite aqui a url da imagem"
+              required
+            />
+            <div id="div-button" class="div-button">
+              <button id="button" class="button">ADICIONAR PRODUTO</button>
+            </div>
+          </form>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
