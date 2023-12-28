@@ -1,9 +1,7 @@
-.block {
+body {
   background-color: #e9e9e9;
   width: 100%;
   height: 100vh;
-  display: grid;
-  grid: 20% 70% / 100%;
 }
 header {
   width: 100%;
@@ -22,6 +20,7 @@ header {
   width: 100%;
   height: 100%;
   align-items: center;
+  justify-content: center;
 }
 .product {
   height: 582px;
@@ -60,26 +59,96 @@ header {
 .button {
   margin-bottom: 20px;
 }
-.image-button {
-  position: absolute;
-  top: 850px;
-  left: 1650px;
-}
 
 .image-img {
   object-fit: contain;
   height: 100%;
   width: 100%;
 }
-@media screen and (min-width:300px) and (max-width:800px) {
-  body {
-    height:100%;
-    display:flex;
+@media screen and (min-width: 300px) and (max-width: 600px) {
+  .content {
+    display: flex;
     flex-direction: column;
   }
-  
+  .product {
+    height: 282px;
+    width: 253px;
+  }
+  main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
   body {
-    display:flex;
-    flex-direction: row;
+    width: 100%;
+    height: 100%;
+  }
+}
+@media screen and (min-width: 601px) and (max-width: 900px) {
+  .content {
+    display: flex;
+    display: grid;
+    grid: auto/ 50% 50%;
+    align-items: center;
+    justify-content: center;
+  }
+  .product {
+    height: 282px;
+    width: 100%;
+  }
+  main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  body {
+    width: 100%;
+    height: 100%;
+  }
+}
+@media screen and (min-width: 901px) and (max-width: 1400px) {
+  .content {
+    display: flex;
+    display: grid;
+    grid: auto/ 33.3% 33.3% 33.3%;
+    align-items: center;
+    justify-content: center;
+  }
+  .product {
+    height: 282px;
+    width: 100%;
+  }
+  main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  body {
+    width: 100%;
+    height: 100%;
+  }
+}
+@media screen and (min-width: 901px) {
+  .content {
+    display: flex;
+    display: grid;
+    grid: auto/ 25% 25% 25% 25%;
+    align-items: center;
+    justify-content: center;
+  }
+  .product {
+    height: 282px;
+    width: 100%;
+  }
+  main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  body {
+    width: 100%;
+    height: 100%;
   }
 }
