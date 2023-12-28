@@ -1,0 +1,169 @@
+.block {
+  width: 100%;
+  height: 100vh;
+  background-color: #e9e9e9;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+main {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+}
+header {
+  margin-top: 10%;
+}
+.content {
+  width: 39%;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+}
+/* deixar mais negrito */
+.name,
+.price,
+.image {
+  padding: 1%;
+  border: 1px solid #e9e9e9;
+  margin-bottom: 3%;
+  color: #000;
+  font-style: regular;
+  line-height: 100%;
+  font-size: 16px;
+  border-radius: 10px;
+}
+.price input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type="number"] {
+  -moz-appearance: textfield; /* Firefox */
+}
+.div-button {
+  display: flex;
+  justify-content: center;
+}
+button {
+  background-color: #24db2b;
+  border: none;
+  width: 50%;
+  height: 45px;
+  color: white;
+  cursor: pointer;
+  font-size: 12px;
+  line-height: 100%;
+  line-height: 15px;
+  font-style: Bold;
+  border-radius: 5px;
+}
+header {
+  width: 39%;
+}
+/* deixar mais negrito */
+.title h1 {
+  margin-bottom: 5%;
+  font-style: bold;
+  font-size: 32px;
+  line-height: 100%;
+}
+@media screen and (min-width: 280px) and (max-width: 400px) {
+  .form {
+    width: 100%;
+    align-items: center;
+    margin-top: 40px;
+  }
+
+  .title h1 {
+    text-align: center;
+  }
+  .name,
+  .price,
+  .image {
+    padding: 5%;
+  }
+  .content {
+    width: 100%;
+  }
+  .button {
+    font-size: 10px;
+    width: 200px;
+  }
+}
+@media screen and (min-width: 401px) and (max-width: 600px) {
+  .form {
+    width: 100%;
+    align-items: center;
+    margin-top: 40px;
+  }
+
+  .title h1 {
+    text-align: center;
+  }
+  .name,
+  .price,
+  .image {
+    padding: 3%;
+  }
+  .content {
+    width: 100%;
+  }
+  .button {
+    font-size: 10px;
+    width: 200px;
+  }
+}
+@media screen and (min-width: 601px) and (max-width: 800px) {
+  .form {
+    width: 100%;
+    align-items: center;
+    margin-top: 40px;
+  }
+
+  .title h1 {
+    text-align: center;
+  }
+  .name,
+  .price,
+  .image {
+    padding: 2%;
+  }
+  .content {
+    width: 100%;
+  }
+  .button {
+    font-size: 10px;
+    width: 200px;
+  }
+}
+@media screen and (min-width: 801px) {
+  .form {
+    width: 100%;
+    align-items: center;
+    margin-top: 40px;
+  }
+
+  .title h1 {
+    text-align: center;
+  }
+  .name,
+  .price,
+  .image {
+    padding: 1%;
+    width: 50%;
+  }
+  .content {
+    width: 100%;
+  }
+  .button {
+    font-size: 10px;
+    width: 200px;
+  }
+}
