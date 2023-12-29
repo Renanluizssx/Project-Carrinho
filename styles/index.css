@@ -87,7 +87,7 @@ header {
   .name,
   .price,
   .image {
-    padding: 5%;
+    padding: 10px;
   }
   .content {
     width: 100%;
@@ -110,7 +110,7 @@ header {
   .name,
   .price,
   .image {
-    padding: 3%;
+    padding: 10px;
   }
   .content {
     width: 100%;
@@ -133,7 +133,7 @@ header {
   .name,
   .price,
   .image {
-    padding: 2%;
+    padding: 10px;
   }
   .content {
     width: 100%;
@@ -156,7 +156,7 @@ header {
   .name,
   .price,
   .image {
-    padding: 1%;
+    padding: 10px;
     width: 50%;
   }
   .content {

@@ -85,5 +85,25 @@ span {
   margin-left: 3%;
 }
 .image {
-  width:200px;
+  width: 200px;
+}
+@media screen and (min-width: 300px) and (max-width: 749px) {
+  .content {
+    display: flex;
+    flex-direction: column;
+  }
+  .product {
+    height: 600px;
+    width: 350px;
+  }
+  .img-minus,
+  .minus-span,
+  .img-plus,
+  .plus-span {
+    width: 25px;
+    margin: 5px;
+  }
+  .image {
+    width: 50px;
+  }
 }

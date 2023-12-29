@@ -3,6 +3,13 @@ body {
   width: 100%;
   height: 100vh;
 }
+.block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  flex-direction: column;
+}
 header {
   width: 100%;
   display: flex;
@@ -12,20 +19,22 @@ header {
 .title h1 {
   font-size: 48px;
   width: 100%;
+  margin-bottom: 50px;
+  margin-top: 50px;
 }
 .content {
   display: flex;
   justify-content: row;
-  gap: 1rem;
   width: 100%;
   height: 100%;
   align-items: center;
   justify-content: center;
 }
 .product {
-  height: 582px;
-  width: 353px;
+  height: 500px;
+  width: 250px;
   background-color: #ffffff;
+  margin: 10px;
 }
 .text {
   font-size: 25px;
@@ -61,94 +70,57 @@ header {
 }
 
 .image-img {
-  object-fit: contain;
   height: 100%;
   width: 100%;
 }
-@media screen and (min-width: 300px) and (max-width: 600px) {
+@media screen and (min-width: 300px) and (max-width: 749px) {
   .content {
     display: flex;
     flex-direction: column;
   }
   .product {
-    height: 282px;
-    width: 253px;
-  }
-  main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-  }
-  body {
-    width: 100%;
-    height: 100%;
+    height: 600px;
+    width: 350px;
   }
 }
-@media screen and (min-width: 601px) and (max-width: 900px) {
+@media screen and (min-width: 750px) and (max-width: 900px) {
   .content {
-    display: flex;
     display: grid;
     grid: auto/ 50% 50%;
-    align-items: center;
-    justify-content: center;
   }
   .product {
-    height: 282px;
-    width: 100%;
-  }
-  main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  body {
-    width: 100%;
-    height: 100%;
+    height: 600px;
+    width: 350px;
   }
 }
-@media screen and (min-width: 901px) and (max-width: 1400px) {
+@media screen and (min-width: 901px) and (max-width: 1150px) {
   .content {
-    display: flex;
+    display: grid;
+    grid: auto/ 50% 50%;
+  }
+  .product {
+    height: 600px;
+    width: 350px;
+  }
+}
+@media screen and (min-width: 1151px) and (max-width: 1400px) {
+  .content {
     display: grid;
     grid: auto/ 33.3% 33.3% 33.3%;
-    align-items: center;
-    justify-content: center;
   }
   .product {
-    height: 282px;
-    width: 100%;
-  }
-  main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  body {
-    width: 100%;
-    height: 100%;
+    height: 600px;
+    width: 350px;
   }
 }
-@media screen and (min-width: 901px) {
+
+@media screen and (min-width: 1401px) {
   .content {
-    display: flex;
     display: grid;
-    grid: auto/ 25% 25% 25% 25%;
-    align-items: center;
-    justify-content: center;
+    grid: auto/ 33.3% 33.3% 33.3%;
   }
   .product {
-    height: 282px;
-    width: 100%;
-  }
-  main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  body {
-    width: 100%;
-    height: 100%;
+    height: 600px;
+    width: 350px;
   }
 }
