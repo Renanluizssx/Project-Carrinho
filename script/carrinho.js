@@ -1,20 +1,21 @@
 const getLocalStorage = (key) => JSON.parse(localStorage.getItem(key)) ?? [];
 const setLocalStorage = (key, item) =>
   localStorage.setItem(key, JSON.stringify(item));
-  
+
 document.addEventListener("DOMContentLoaded", updateProduct);
 
-function handleItemChange(productID, index, operation){
-  const newQuantity = changeQuantity(productID, index, operation)
-  const newPrice = changePrice(productID, newQuantity)
+function handleItemChange(productID, index, operation) {
+  const newQuantity = changeQuantity(productID, index, operation);
+  const newPrice = changePrice(productID, newQuantity);
   refreshCart(productID, newQuantity, newPrice);
   return calculateTotalPriceAndQuantity();
 }
 
 function changeQuantity(productID, index, operation) {
   const carts = getLocalStorage("carts");
-  const productCart = carts.find((product) => product.id === productID)
-  const newQuantity = operation === 'plus' ? productCart.quantity + 1 : productCart.quantity - 1;
+  const productCart = carts.find((product) => product.id === productID);
+  const newQuantity =
+    operation === "plus" ? productCart.quantity + 1 : productCart.quantity - 1;
 
   if (newQuantity <= 0) {
     productDelete(index);
@@ -22,9 +23,8 @@ function changeQuantity(productID, index, operation) {
 
   document.getElementById(`n-span-${productID}`).innerText = newQuantity;
 
-  return newQuantity
+  return newQuantity;
 }
-
 
 function changePrice(productID, newQuantity) {
   const price = getLocalStorage("products")[productID].price;
@@ -46,7 +46,6 @@ function refreshCart(productID, newQuantity, newPrice) {
 
   return setLocalStorage("carts", newCart);
 }
-
 
 function calculateTotalPriceAndQuantity() {
   const products = getLocalStorage("carts");
@@ -72,18 +71,17 @@ function calculateTotalPriceAndQuantity() {
   ]);
 }
 
-
 function productDelete(index) {
-  const upProducts = getLocalStorage("carts")
+  const upProducts = getLocalStorage("carts");
   upProducts.splice(index, 1);
   setLocalStorage("carts", upProducts);
-  return updateProduct()
+  return updateProduct();
 }
 
 function printProduct(product, index) {
-  const productID = product.id
+  const productID = product.id;
 
-  return content.innerHTML += `
+  return (content.innerHTML += `
     <div id="shopping-cars-${productID}" class="shopping-cars">
       <div id="product-image-${productID}" class="product-image">
           <img id="image-${productID}" class="image" src="${product.image}" alt="image">
@@ -94,31 +92,31 @@ function printProduct(product, index) {
           </h2>
       </div> 
       <div id="minus" class="minus" onclick="handleItemChange(${product.id},${index}, 'minus')">
-        <img id="img-minus-${productID}" class="img-minus" src="../images/Ellipse 2.png" alt="minus" >
+       
         <span id="minus-span" class="minus-span">-</span>
       </div>
       <div id="number${productID}" class="number">
         <span id="n-span-${productID}" class="n-span" data-productID="productID">${product.quantity}</span> 
       </div>
       <div id="plus-${productID}" class="plus" onclick="handleItemChange(${product.id},${index},'plus')">
-        <img id="img-plus-${productID}" src="../images/Ellipse 3.png" alt="plus" >
+    
         <span id="plus-span" class="plus-span">+</span>
       </div>
       <div id="div-move-${productID}" class="div-move">
       <div id="price" class="price">
         <p id="p-price-${productID}" class="p-price">
-        R$${product.price},00</p>
+        R$${product.price}</p>
       </div>
       <div id="delete" class="delete">
         <span id="s-delete" class="s-delete" onclick="productDelete(${index})">Deletar</span>
       </div>
     </div>
-  `;
+  `);
 }
 
 function updateProduct() {
-  content.innerHTML = ''
-  calculateTotalPriceAndQuantity()
+  content.innerHTML = "";
+  calculateTotalPriceAndQuantity();
   const carts = getLocalStorage("carts");
   return carts.forEach(printProduct);
 }

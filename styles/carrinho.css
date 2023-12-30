@@ -17,24 +17,13 @@ h2 {
   display: flex;
   justify-content: center;
 }
-/* a revisar*/
+.plus,
 .minus {
-  position: relative;
-  font-size: 60px;
-}
-.minus-span {
-  position: absolute;
-  left: -3px;
-  top: -8px;
-}
-.plus {
-  position: relative;
-  font-size: 50px;
-}
-.plus-span {
-  position: absolute;
-  left: -7px;
-  top: -9px;
+  background-image: url("../images/Ellipse\ 2.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 10px;
 }
 .shopping-cars {
   display: flex;
@@ -58,12 +47,6 @@ h2 {
   margin-left: -10%;
   align-items: flex-end;
 }
-.img-minus,
-.minus-span,
-.img-plus,
-.plus-span {
-  cursor: pointer;
-}
 h1 {
   font-size: 48px;
   line-height: 55%;
@@ -72,7 +55,6 @@ h1 {
 span {
   font-size: 36px;
   font-style: Bold;
-  line-height: 73%;
   margin: 25px;
 }
 .subtitle {
@@ -83,9 +65,14 @@ span {
 }
 .div-move {
   margin-left: 3%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 .image {
   width: 200px;
+  border-radius: 15px;
 }
 @media screen and (min-width: 300px) and (max-width: 749px) {
   .content {
@@ -96,14 +83,22 @@ span {
     height: 600px;
     width: 350px;
   }
-  .img-minus,
-  .minus-span,
-  .img-plus,
-  .plus-span {
-    width: 25px;
-    margin: 5px;
-  }
   .image {
     width: 50px;
+  }
+  h2 {
+    font-size: 20px;
+  }
+  .plus,
+  .minus {
+    padding: 1px;
+  }
+
+  span {
+    font-size: 15px;
+    margin: 10px;
+  }
+  .s-delete {
+    font-size: 15px;
   }
 }
