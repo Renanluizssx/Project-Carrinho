@@ -24,6 +24,7 @@ h2 {
   background-repeat: no-repeat;
   background-position: center;
   padding: 10px;
+  cursor: pointer;
 }
 .shopping-cars {
   display: flex;
